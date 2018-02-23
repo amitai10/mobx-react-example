@@ -2,3 +2,13 @@
   text-align: center;
 }
 
+.list {
+  text-align: left;
+  margin: 20px;
+}
+
+.grocery {
+  background-color: aliceblue;
+  margin: 10px;
+  cursor: pointer;
+}

@@ -3,6 +3,7 @@ import { observer, inject } from 'mobx-react';
 
 import './App.css';
 import Add from './add.component';
+import GroceriesList from './groceriesList.component';
 
 @inject("groceryStore")
 @observer
@@ -11,10 +12,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <Add />
-        <div className="list">
-          {this.props.groceryStore.groceries.map((g,index) =>  <li key={index}>{g}</li> )}
-        </div>
+        <Add />
+        <GroceriesList />
       </div>
     );
   }

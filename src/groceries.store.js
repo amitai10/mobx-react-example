@@ -7,4 +7,8 @@ export default class GroceryStore {
 	add(g) {
 		this.groceries.push(g);
 	}
+
+	delete(name) {
+		this.groceries.remove(name)
+	}
 }
