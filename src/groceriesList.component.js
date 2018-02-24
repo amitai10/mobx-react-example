@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
-import { computed } from 'mobx';
 
 import './App.css';
 import Grocery from './grocery.component';

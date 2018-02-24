@@ -5,12 +5,8 @@ import './App.css';
 
 @inject("groceryStore")
 class Grocery extends Component {
- constructor() {
-     super();
-     this.delete = this.delete.bind(this);
- }
 
- delete() {
+ delete = () => {
     this.props.groceryStore.delete(this.props.name)
  }
   render() {

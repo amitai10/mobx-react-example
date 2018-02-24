@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
-import { observer, inject } from 'mobx-react';
+import { Provider } from 'mobx-react';
+import {  } from 'mobx-react';
 
 import './App.css';
+import GroceryStore from './groceries.store';
 import Add from './add.component';
 import GroceriesList from './groceriesList.component';
 
-@inject("groceryStore")
-@observer
+const groceryStore = new GroceryStore();
+
 class App extends Component {
  
   render() {
     return (
-      <div className="App">
-        <Add />
-        <GroceriesList />
-      </div>
+      <Provider groceryStore = {groceryStore}>
+        <div className="App">
+          <Add />
+          <GroceriesList />
+        </div>
+      </Provider>
     );
   }
 }

@@ -11,18 +11,15 @@ class Add extends Component {
     this.state = {
       inputValue: ''
     }
-
-    this.updateInputValue = this.updateInputValue.bind(this);
-    this.add = this.add.bind(this);
   }
 
-  updateInputValue(evt) {
+  updateInputValue = (evt) => {
     this.setState({
       inputValue: evt.target.value
     });
   }
 
-  add() {
+  add = () => {
     this.props.groceryStore.add(this.state.inputValue)
     this.setState({
       inputValue: ''
