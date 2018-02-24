@@ -11,4 +11,9 @@ export default class GroceryStore {
 	delete(name) {
 		this.groceries.remove(name)
 	}
+
+	@computed 
+	get numOfGroceries() {
+		return this.groceries.length;
+	}
 }
