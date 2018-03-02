@@ -1,32 +1,32 @@
 # MobX with React Introduction
 
-MobX is a simple state management solution, that can be uses very easelly for ReactJS.  
-ReactJS is a render a JavaScript library for building user interfaces, but it doesn’t have a built in state management or two way binding like Angular (In version 16.3 it has changed by introducing the new Context API).
+MobX is a simple state management solution, that can be used very easily for ReactJS.  
+ReactJS is a render a JavaScript library for building user interfaces, but it doesn’t have a built-in state management or two way binding like Angular (In version 16.3 it has changed by introducing the new Context API).
 
-In the last couple of years Redux has established itself as the go to solution for state management.
+In the last couple of years, Redux has established itself as the go-to solution for state management.
 
-In this blog post I will introduce MobX which is a much easier and cleaner alternative to Redux. I will not compare the two, but MobX is also very common and can be used without hesitation.
+In this blog post, I will introduce MobX which is a much easier and cleaner alternative to Redux. I will not compare the two, but MobX is also very common and can be used without hesitation.
 
 ## MobX principals:
 Actions -> State -> Derivations + Reactions 
 - State - the state of the application (similar to Redux’s store).
 - Derivations -  Value that can be computed automatically from the state.
 - Reactions - automatically to perform some task like changing the DOM when the state changes.
-- Actions - functions that changes the state.
+- Actions - functions that change the state.
 
-Mobx-react - A library that binds mobx with react. 
+mobx-react - A library that binds mobx with react. 
 
 ## MobX decorators
-Mobx (and mobx-react)  can be used with regular JS functions or with decorators. Decorators makes a much cleaner solution so I will use them in this post. 
+Mobx (and mobx-react)  can be used with regular JS functions or with decorators. Decorators make a much cleaner solution so I will use them in this post. 
 Mobx decorators:
-- __@observable__ - turn property into an observable, observers will be notified and react to changes on those properties. The properties types can be objects, arrays or references.
+- __@observable__ - turn a property into an observable, observers will be notified and react to changes in those properties. The properties types can be objects, arrays or references.
 - __@computed__ - values that will be derived automatically when relevant data is modified.
-- __@observer__ (mobx-react) - make react component reactive to state change. Basically it calls the component’s render function when the state changes.
-- __@action__ - method that changes the state.
+- __@observer__ (mobx-react) - make react component reactive to the state change. Basically, it calls the component’s render function when the state changes.
+- __@action__ - a method that changes the state.
 - __Provider__ and __@inject__ - inject the store to the component (like connect in Redux). 
 
 ## MobX + React example
-In this section I will demonstrate how to use mobx with react. I will create a grocery application that allows to add or remove groceries from a list and count their total.
+In this section, I will demonstrate how to use mobx with react. I will create a grocery application that allows to add or remove groceries from a list and count their total.
 
 I will use create-react-app for bootstrapping the application. And then add mobx and mobx-react
 ```
@@ -44,28 +44,28 @@ import { observable, computed, action } from "mobx";
 
 
 export default class GroceryStore {
-	@observable groceries = [];
+    @observable groceries = [];
 
-	@action
-	add(g) {
-		this.groceries.push(g);
-	}
+    @action
+    add(g) {
+        this.groceries.push(g);
+    }
 
-	@action
-	delete(name) {
-		this.groceries.remove(name)
-	}
+    @action
+    delete(name) {
+        this.groceries.remove(name)
+    }
 
-	@computed 
-	get numOfGroceries() {
-		return this.groceries.length;
-	}
+    @computed 
+    get numOfGroceries() {
+        return this.groceries.length;
+    }
 }
 
 ```
 The store has one observable (groceries), two actions (add and delete) and one computed (numOfGroceries).
 
-The application UI has two parts: add component to add grocery and the list of groceries.
+The application UI has two parts: 'add' component to add grocery and the list of groceries.
 ```js
 // App.js
 
@@ -160,7 +160,7 @@ import Grocery from './grocery.component';
 @inject("groceryStore")
 @observer
 class GroceriesList extends Component {
-	    
+        
   render() {
     const store = this.props.groceryStore;
     return (
@@ -208,7 +208,7 @@ Again, we inject the store and use the delete action.
 That’s it!
 
 ## Conclusion
-MobX is very elegant, although it is not a flux implementation, it let’s you work with react without any boilerplate code like actions, reducers,  middlewares… 
+MobX is very elegant, although it is not a flux implementation, it lets you work with react without any boilerplate code like actions, reducers,  middlewares… 
 
 Give it a try!
 
@@ -217,7 +217,6 @@ Give it a try!
 - https://mobx.js.org/getting-started.html
 - https://github.com/mobxjs/mobx-react
 - https://github.com/mobxjs/mobx
-
 
 
 
